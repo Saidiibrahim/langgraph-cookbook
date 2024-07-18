@@ -1,0 +1,10 @@
+langgraph==0.1.5
+langchain-core==0.2.10
+langchain==0.2.6
+langchain-experimental==0.0.62
+langchain-openai==0.1.13
+resend==2.1.0
+exa-py==1.0.12
+supabase==2.5.1
+python-dotenv==1.0.1
+modal==0.63.31
