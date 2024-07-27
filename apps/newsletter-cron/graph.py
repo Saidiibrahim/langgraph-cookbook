@@ -30,7 +30,6 @@ research_node = functools.partial(agent_node, agent=research_agent, name="Resear
 content_designer_agent = create_agent(llm, [load_html_template], "You are a content designer. Your task is to convert the research output and convert it into html content that can be sent to the user. Always use the load_html_template tool to get the html template.")
 content_designer_node = functools.partial(agent_node, agent=content_designer_agent, name="ContentDesigner")
 
-# NOTE: THIS PERFORMS ARBITRARY CODE EXECUTION. PROCEED WITH CAUTION
 content_distributor_agent = create_agent(
     llm,
     [email_sender_tool],

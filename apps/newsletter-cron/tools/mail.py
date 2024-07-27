@@ -21,7 +21,7 @@ class EmailSender(BaseTool):
     """
     A tool for sending emails to a list of recipients.
     """
-    name: str = "EmailSender"
+    name: str = "EmaiSlSender"
     description: str = (
         "A tool for sending emails to a list of recipients."
         )

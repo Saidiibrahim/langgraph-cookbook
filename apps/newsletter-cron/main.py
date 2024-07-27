@@ -20,7 +20,7 @@ graph_image = modal.Image.debian_slim().pip_install_from_requirements(requiremen
 
 @app.function(
     image=graph_image,
-    schedule = modal.Period(minutes=10),
+    schedule = modal.Period(weeks=1),
     secrets=[modal.Secret.from_dotenv(path=env_path)],
     timeout=900
 )

@@ -95,22 +95,6 @@ supervisor_chain = (
     | JsonOutputFunctionsParser()
 )
 
-
-# Function to upload a file
-def upload_file(file_path: str, bucket_name: str):
-    try:
-        with open(file_path, 'rb') as f:
-            file_name = os.path.basename(file_path)
-            response = supabase.storage.from_(bucket_name).upload(
-                file=f,
-                path=file_name,
-                file_options={"content-type": "application/octet-stream"}
-            )
-        return response
-    except StorageException as e:
-        print(f"Error uploading file: {e}")
-        return None
-
 # Function to read a file
 def read_file(file_name: str, bucket_name: str, destination: str):
     with open(destination, 'wb+') as f:
