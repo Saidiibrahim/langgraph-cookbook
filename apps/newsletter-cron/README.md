@@ -11,14 +11,12 @@ Modal: To schedule our agents to run at particular time
 *Exa AI: Gives our agents the ability to search the web
 *Supabase: To store our newsletter HTML template
 *Resend: For sending emails at scale
-*Be sure to get your API keys from these links. You'll need them.
 
 *Be sure to get your API keys from these links. You’ll need them.
 
 ## The Cognitive Architecture
 
-![Cognitive Architecture](./newsletter-cron/images/supervisor_architecture.png
-)
+![Cognitive Architecture](./images/supervisor_architecture.png)
 
 The cognitive we adopt the agent-supervisor architecture to design our agentic workflow. In this architecture, there’s a supervisor agent that’s responsible for delegating tasks to the right agent for the task at hand.
 
@@ -46,4 +44,4 @@ The serverless platform of choice here is [Modal](https://modal.com/), an infras
 
 To run our app periodically, Modal allows us to schedule functions in a straightforward manner.
 
-In our [main.py](./main.py) file, define an instance of a Modal App , which is an object representing an application running on Modal.
+In our [main.py](./main.py) file, we define an instance of a `Modal App` , an object representing an application running on Modal.
