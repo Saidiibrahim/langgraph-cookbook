@@ -17,6 +17,7 @@ Modal: To schedule our agents to run at particular time
 ## The Cognitive Architecture
 
 ![Cognitive Architecture](./images/supervisor_architecture.png)
+*source: [LangGraph Examples GitHub repo](https://github.com/langchain-ai/langgraph/tree/main/examples/multi_agent/img)*
 
 The cognitive we adopt the agent-supervisor architecture to design our agentic workflow. In this architecture, there’s a supervisor agent that’s responsible for delegating tasks to the right agent for the task at hand.
 
