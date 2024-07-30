@@ -7,3 +7,7 @@ The repo is divided in two parts:
 - `apps`: A collection of agentic applications using LangGraph.
       - Each app has its own README with instructions on how to run it.
 - `notebooks`: A collection of notebooks used to test and develop the agentic applications.
+
+TODO:
+- Create a single `tools` package that will contain the tools used to develop the agentic applications
+- Create a single `utils` package that will contain the utility functions.
