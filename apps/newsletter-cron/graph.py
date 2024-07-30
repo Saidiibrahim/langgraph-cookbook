@@ -4,7 +4,7 @@ from typing import Sequence, TypedDict, Annotated
 from utils import create_agent, agent_node, members, llm, supervisor_chain
 from tools.html_loader import load_html_template
 from tools.mail import EmailSender
-from tools.search import exa_tools, tavily_tool
+from tools.search import search, get_contents, find_similar
 from langchain_core.messages import BaseMessage
 from langgraph.graph import END, StateGraph
 from langchain.tools import tool
@@ -13,6 +13,7 @@ import os
 
 email_sender_tool = EmailSender()
 email_list = ["ibrahim.aka.ajax@gmail.com"]
+
 
 
 # The agent state is the input to each node in the graph
@@ -24,7 +25,7 @@ class AgentState(TypedDict):
     next: str
 
 
-research_agent = create_agent(llm, [tavily_tool], "You are a web researcher.")
+research_agent = create_agent(llm, [search, get_contents, find_similar], "You are a web researcher.")
 research_node = functools.partial(agent_node, agent=research_agent, name="Researcher")
 
 content_designer_agent = create_agent(llm, [load_html_template], "You are a content designer. Your task is to convert the research output and convert it into html content that can be sent to the user. Always use the load_html_template tool to get the html template.")

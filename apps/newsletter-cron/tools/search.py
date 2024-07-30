@@ -41,6 +41,4 @@ def get_contents(ids: list[str]):
     return exa.get_contents(ids)
 
 
-exa_tools = [search, get_contents, find_similar]
-
 tavily_tool = TavilySearchResults(max_results=5, api_key=tavily_api_key)

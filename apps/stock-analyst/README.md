@@ -1,3 +1,0 @@
-# Coming Soon...
-
-This is a placeholder for the stock analyst service. It is not yet implemented.

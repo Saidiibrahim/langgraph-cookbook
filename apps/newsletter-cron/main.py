@@ -37,7 +37,16 @@ def run_graph():
         print(s)
 
 
-if __name__ == "__main__":
-    with app.run():
-        time.sleep(60)
+app.local_entrypoint()
+def run_graph_local():
+    topic = "Stock Market"
+    query = f"Do a thorough research on the latest news on {topic} and distribute the content to the email addresses at your disposal."
+    for s in graph.stream(
+        {
+            "messages": [
+                HumanMessage(content=query)
+            ]
+        }
+    ):
+        print(s)
 
