@@ -1,6 +1,6 @@
 # LangGraph Cookbook
 
-This repository contains a collection of agentic applications using LangGraph. It is a work in progress and will be updated as we add more recipes.
+This repository contains a collection of agentic applications using LangGraph. It is a work in progress and will be updated as we add more apps.
 
 The repo is divided in two parts:
 
