@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "langgraph-cookbook"
 version = "0.0.1"
-description = ""
+description = "Hello world"
 authors = ["ibrahimsaidi <ibrahim.aka.ajax@gmail.com>"]
 readme = "README.md"
 packages =  [
