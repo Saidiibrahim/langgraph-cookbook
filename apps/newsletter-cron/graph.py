@@ -2,9 +2,7 @@ import functools
 import operator
 from typing import Sequence, TypedDict, Annotated
 from utils import create_agent, agent_node, members, llm, supervisor_chain
-from tools.html_loader import load_html_template
-from tools.mail import EmailSender
-from tools.search import search, get_contents, find_similar
+from tools import load_html_template, EmailSender, search, get_contents, find_similar
 from langchain_core.messages import BaseMessage
 from langgraph.graph import END, StateGraph
 from langchain.tools import tool

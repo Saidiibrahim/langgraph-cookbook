@@ -4,7 +4,11 @@ version = "0.0.1"
 description = ""
 authors = ["ibrahimsaidi <ibrahim.aka.ajax@gmail.com>"]
 readme = "README.md"
-
+packages =  [
+    { include = "apps", from = "." },
+    { include = "tools", from = "." },
+    { include = "utils", from = "." }
+]
 [tool.poetry.dependencies]
 python = "^3.12"
 langgraph = "^0.1.5"

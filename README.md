@@ -9,5 +9,6 @@ The repo is divided in two parts:
 - `notebooks`: A collection of notebooks used to test and develop the agentic applications.
 
 TODO:
-- Create a single `tools` package that will contain the tools used to develop the agentic applications
-- Create a single `utils` package that will contain the utility functions.
+- [x] Create a single `tools` package that will contain the tools used to develop the agentic applications
+- [x] Create a single `utils` package that will contain the utility functions.
+- [ ] Complete the job-search-team app
