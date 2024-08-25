@@ -14,7 +14,7 @@ load_dotenv()
 # Optional, add tracing in LangSmith
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["LANGCHAIN_PROJECT"] = "Newsletter Cron"
+os.environ["LANGCHAIN_PROJECT"] = "Job Search Team"
 
 
 def create_agent(llm: ChatOpenAI, tools: list, system_prompt: str):

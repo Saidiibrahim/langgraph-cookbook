@@ -1,0 +1,13 @@
+{
+  "python_version": "3.12",
+  "dockerfile_lines": [],
+  "dependencies": [
+    "./apps/newsletter-cron",
+    "./tools",
+    "./utils"
+  ],
+  "graphs": {
+    "agent": "./apps/newsletter-cron/graph.py:graph"
+  },
+  "env": ".env"
+}
