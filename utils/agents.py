@@ -42,17 +42,18 @@ def agent_node(state, agent, name):
 
 
 # Supervisor Agent
-members = ["Researcher", "ContentDesigner", "ContentDistributor"]
+# members = ["Researcher", "ContentDesigner", "ContentDistributor"]
+job_search_team_members = ["JobSearch", "ContentDesigner", "ContentDistributor"]
 system_prompt = (
     "You are a supervisor tasked with managing a conversation between the"
-    " following workers:  {members}. Given the following user request,"
+    " following workers:  {job_search_team_members}. Given the following user request,"
     " respond with the worker to act next. Each worker will perform a"
     " task and respond with their results and status. When finished,"
     " respond with FINISH."
 )
 # Our team supervisor is an LLM node. It just picks the next agent to process
 # and decides when the work is completed
-options = ["FINISH"] + members
+options = ["FINISH"] + job_search_team_members
 # Using openai function calling can make output parsing easier for us
 function_def = {
     "name": "route",
@@ -81,7 +82,7 @@ prompt = ChatPromptTemplate.from_messages(
             " Or should we FINISH? Select one of: {options}",
         ),
     ]
-).partial(options=str(options), members=", ".join(members))
+).partial(options=str(options), job_search_team_members=", ".join(job_search_team_members))
 
 llm = ChatOpenAI(model="gpt-4o", api_key=os.environ["OPENAI_API_KEY"])
 

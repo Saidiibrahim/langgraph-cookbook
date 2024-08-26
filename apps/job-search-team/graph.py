@@ -1,10 +1,11 @@
 import functools
 import operator
 from typing import Sequence, TypedDict, Annotated
-from utils import create_agent, agent_node, members, llm, supervisor_chain
+from utils import create_agent, agent_node, job_search_team_members, llm, supervisor_chain
 from tools import (
     EmailSender,
-)
+    load_job_search_email_template
+    )
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.messages import BaseMessage
 from langgraph.graph import END, StateGraph
@@ -31,14 +32,14 @@ class AgentState(TypedDict):
     # The 'next' field indicates where to route to next
     next: str
 
-researcher_agent_prompt = """
+job_search_agent_prompt = """
 You are a web researcher responsible for finding job listings.
 """
 
-job_search_agent = create_agent(llm, [tavily_search_tool], researcher_agent_prompt)
+job_search_agent = create_agent(llm, [tavily_search_tool], job_search_agent_prompt)
 job_search_node = functools.partial(agent_node, agent=job_search_agent, name="JobSearch")
 
-content_designer_agent = create_agent(llm, "You are a content designer. Your task is to convert the findings from the job search into html content that can be sent to the user. Use your knowledge of html to format the content in a way that is easy to read and understand.")
+content_designer_agent = create_agent(llm, [load_job_search_email_template], "You are a content designer. Your task is to convert the findings from the job search into html content that can be sent to the user. Use the load_job_search_email_template tool to format the content.")
 content_designer_node = functools.partial(agent_node, agent=content_designer_agent, name="ContentDesigner")
 
 content_distributor_agent = create_agent(
@@ -54,12 +55,12 @@ workflow.add_node("ContentDesigner", content_designer_node)
 workflow.add_node("ContentDistributor", content_distributor_node)
 workflow.add_node("supervisor", supervisor_chain)
 
-for member in members:
+for member in job_search_team_members:
     # We want our workers to ALWAYS "report back" to the supervisor when done
     workflow.add_edge(member, "supervisor")
 # The supervisor populates the "next" field in the graph state
 # which routes to a node or finishes
-conditional_map = {k: k for k in members}
+conditional_map = {k: k for k in job_search_team_members}
 conditional_map["FINISH"] = END
 workflow.add_conditional_edges("supervisor", lambda x: x["next"], conditional_map)
 # Finally, add entrypoint
